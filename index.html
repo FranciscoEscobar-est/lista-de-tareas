@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #titulo{
+            color: #242092;
+        }
+        #div1{
+            background-color: rgba(24, 24, 187, 0.705);
+            padding: 10px 0px 10px 0px;
+            border: 2px solid rgb(0, 0, 0);
+            margin: 20px 20px;
+            position: relative;
+                }
+    </style>
+</head>
+
+<body>
+    <H1 id="titulo">Lista de tareas</H1>
+    <div id="div1">
+        <input type="text" id="nuevaTarea" placeholder="ingrese una nueva tarea">
+        <button id="agregarTarea">Agregar</button>
+    </div>
+    <div id="div2">
+        <h2>tareas pendientes</h2>
+        <ul id="listaTareas"></ul>
+    </div>
+
+    <script>
+        document.getElementById("agregarTarea").addEventListener("click", function () {
+            const Tarea = document.getElementById("nuevaTarea").value.trim();
+
+            if (Tarea === "") {
+                alert("Porfavor ingrese una tarea")
+                return;
+            }
+
+            const li = document.createElement("li");
+            li.textContent = Tarea;
+            document.getElementById("listaTareas").appendChild(li);
+
+            document.getElementById("nuevaTarea").value = "";
+
+            const botonEliminar = document.createElement("button");
+            botonEliminar.textContent = "Eliminar";
+            botonEliminar.addEventListener("click", function(){
+                li.remove();
+            })
+            li.appendChild(botonEliminar);
+        });
+    </script>
+</body>
+
+</html>
